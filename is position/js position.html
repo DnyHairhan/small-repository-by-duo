@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>	</title>
+	<meta 	charset="utf-8">
+</head>
+<body>
+	<!--行间js
+		特点：
+		不容易维护
+		不能重复利用
+	 -->
+	 <input type="button" name="" value="按钮" style="background:red" onclick="alert(1)">
+
+
+
+	 <!-- 内嵌js
+		
+		特点
+		页面加载慢
+		不利用复用 
+	  -->
+
+	  <input type= "button" name="" value="按钮2" id="btn2">
+	  <script>
+	  	document.getElementById('btn2').onclick = function() {
+	  		alert('按钮2');
+	  	}
+	  </script>
+
+
+	  <!-- 外链js
+		
+		特点：
+		可重复利用
+		方便修改
+	   -->
+	   <input type="button" name="" value="按钮3" id="btn3">
+	   <script src="3.js">
+	   </script>
+</body>
+</html>
