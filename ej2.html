@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<!-- 需求
+	点击页面中的按钮改变div的宽度
+	
+	步骤：
+	1.获取元素
+		按钮和被改变的元素
+	2.点击按钮
+	3.改变元素的属性
+	-->
+
+	 <div id="box" style="width:20px; height:20px; background:#786;"></div>
+	 <input type="button" name="" id="btn1" value="按钮1">
+
+	 <script type="text/javascript">
+	 	document.getElementById('btn1').onclick = function() {
+	 		document.getElementById('box').style.width = '40px';
+	 	}
+	 </script>
+</body>
+</html>
