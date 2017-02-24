@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#box {
+			width:30px;
+			height:30px;
+			background: green;
+		}
+		#btn {
+			background: #977;
+		}
+	</style>
+</head>
+<body>
+	<!-- 
+	一般情况下代码从上而下,从左到右执行，js也同样
+	1.提示为null时说明没有获取到元素或者获取有误，因为html都没有加载完成就获取是获取不到的
+		解决办法：window.onload页面加载完成之后
+
+	 -->
+	<script type="text/javascript">
+	window.onload = function() {
+		document.getElementById('btn').onclick = function() {
+			document.getElementById('box').style.width = '50px';
+		}
+	}
+		
+	</script>
+	<input type="button" name="" value="按钮" id="btn">
+	<div id="box"></div>
+
+</body>
+</html>
