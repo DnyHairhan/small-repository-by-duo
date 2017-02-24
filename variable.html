@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+ 	<!-- console.log()结果显示在浏览器控制台中-->
+	
+	<!-- 变量
+		可变的量，可复用，可以精简代码
+
+		声明变量：
+			var 变量名 = 值;
+			声明一个变量既可以赋值，也可以不用赋值
+	 -->
+	<script type="text/javascript">
+		// 声明变量并赋值
+		var a = 12; //12
+		console.log(a);
+		
+		// 声明变量不赋值,当变量不赋值时变量的默认值为undefined
+		var b;
+		console.log(b); //undefined
+
+		//打印没有声明的变量时会报错
+		// console.log(c); //c is not defined
+	</script>
+
+
+	<!-- 
+		变量的命名规则：
+			1.可由字母、数字、下划线（_）、美元符（$）组成
+			2.不允许数字开头
+			3.不允许使用关键字和保留字
+				关键字 => 当前语法中正在使用的单词
+				保留字 => 将来可能在语法中使用的单词
+	 -->
+	<script type="text/javascript">
+		var a1 = 'a1';
+		console.log(a1); //a1
+
+		var a_1 = 'a_1';
+		console.log(a_1); //a_1
+
+		var $a = '$a';
+		console.log($a); //$a
+
+		var 1a = '1a';
+		console.log(1a); //报错Unexpected number
+	</script>
+
+	<!-- 
+	变量的命名风格
+		1.语义化=>命名的变量尽量贴合实际意思
+		2.驼峰命名
+			大驼峰
+				首字母大写
+					Date()
+					Math()
+					系统对象
+			小驼峰
+				从第二个单词开始，首字母大写
+				getElementById
+	 -->
+
+</body>
+</html>
