@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<!-- 属性操作方法
+
+		用 . 和 [] 来获取属性的值，两者都能取到属性但是有不同点，如果获取了一个没有定义的属性，什么都获取不到也不会报错
+		区别：
+			. 取复合属性的时候要把横杠去掉，把横岗后面的第一个字母大写
+			[] 可以直接取复合属性，但是用的时候里边必须要有单引号或者双引号
+	-->
+	<input type="button" name="" value="按钮" style="background:yellow; width:100px; height:30px; font-size: 15px;" id="btn" class="btnClass">
+	<script type="text/javascript">
+		var btn = document.getElementById('btn');
+
+		btn.onclick = function() {
+			console.log(btn.style.width);  //100px
+			console.log(btn['id']); //btn
+			console.log(btn.style.fontSize); //15px 
+			console.log(btn['style']["font-size"]); //15px
+			// console.log(btn.style.font-size); //会报错 size is not defind
+			console.log(btn.style.font); //什么都没有打出来
+		}
+	</script>
+
+	<!-- 如果是获取class属性的话就要用className来获取，因为class是保留字 -->
+	<script type="text/javascript">
+		console.log(btn.class); //undefined
+		console.log(btn['class']); //undefined
+		console.log(btn.className); //btnClass
+		console.log(btn['className']); //btnClass
+	</script>
+</body>
+</html>
