@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		img {
+			width:300px;
+		}
+		a {
+			text-decoration:none;
+			font-size:20px;
+		}
+	</style>
+</head>
+<body>
+	<img src="haizei.jpg" id="img">
+	<a href="http://www.baidu.com" id="a">链接</a>
+	<!-- 
+	src 取到的是图片的绝对地址，不是标签中输入的内容
+	href 取到的是绝对路径，不是标签中输入的地址
+
+
+	注意：在判断的时候不能用src和href来判断
+	 -->
+	<script type="text/javascript">
+		var img = document.getElementById('img')
+		var a = document.getElementById('a');
+		console.log(img.src); //http://localhost/git/small-repository-by-duo/haizei.jpg
+		console.log(a.href); //http://www.baidu.com/
+	</script>
+</body>
+</html>
