@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body id="bd">
+	<input type="button" name="" id="btn1" value="按钮1">
+	<input type="button" name="" id="btn2" value="按钮2">
+	<div id="box" style="width:100px; height:100px; border: 1px solid #000;"></div>
+	<!-- 
+		getComputedStyle(获取到的元素).样式 
+		这是可以获取元素当前的样式
+	-->
+	<script type="text/javascript">
+		var btn1 = document.getElementById('btn1');
+		var btn2 = document.getElementById('btn2');
+		var bd = document.getElementById('bd');
+		var box = document.getElementById('box');
+		btn1.onclick = function() {
+			console.log(getComputedStyle(bd).background);
+			console.log(getComputedStyle(box).background);
+			console.log(getComputedStyle(box).width);
+		}
+		btn2.onclick = function() {
+			box.style.width = '200px';
+			box.style.background = 'red';
+		}
+	</script>
+</body>
+</html>
