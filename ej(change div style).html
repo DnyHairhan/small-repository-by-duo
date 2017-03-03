@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#box {
+			width:100px;
+			height:100px;
+			border:2px solid #000;
+		}
+		.wrap {
+			position: absolute;
+			top :0;
+			left:0;
+			right:0;
+			bottom: 0;
+			background: rgba(0,0,0,.5);
+			display: none;
+		}
+		.checkbox {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			padding:10px;
+			background: #fff;
+			border: 3px solid #ccc;
+		}
+		.bar {
+			height:65px;
+			width: 100%;
+		}
+		.bar span {
+			float: left;
+			margin:15px;
+			text-align: center;
+			line-height: 30px;
+		}
+		.bar .btn {
+			width:30px;
+			height: 30px;
+			border:1px solid #000;
+		    cursor: pointer;
+		}
+		.colorBar .btn {
+			opacity: .5;
+		}
+		.widthBar .btn,.heightBar .btn {
+			background: #fff;
+		}
+		.yellow {
+			background: yellow;
+		}
+		.red {
+			background:red;
+		}
+		.green {
+			background: green;
+		}
+		.finalBtn {
+			text-align: center;
+			line-height: 50px;
+		}
+		.finalBtn input {
+			width:100px;
+			height:25px;
+		}
+	</style>
+</head>
+<body>
+	<p class="title">
+		<span>请为下面的div设置样式：</span>
+		<input type="button" name="" id="showBtn" value="点击设置样式">
+	</p>
+	<div id="box"></div>
+	<div class="wrap" id="wrap">
+		<div class="checkbox">
+			<div class="bar colorBar">
+				<span class="title">选择背景</span>
+				<span class="btn yellow" id="yellow">黄</span>
+				<span class="btn red" id="red">红</span>
+				<span class="btn green" id="green">绿</span>
+			</div>
+			<div class="bar widthBar">
+				<span class="title">选择宽度</span>
+				<span class="btn" id="width200">200</span>
+				<span class="btn" id="width150">150</span>
+				<span class="btn" id="width250">250</span>
+			</div>
+			<div class="bar heightBar">
+				<span class="title">选择高度</span>
+				<span class="btn" id="height200">200</span>
+				<span class="btn" id="height150">150</span>
+				<span class="btn" id="height250">250</span>
+			</div>
+			<div class="finalBtn">
+				<input type="button" name="" value="确定" id="determine">
+				<input type="button" name="" value="恢复" id="restore">
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var btn = document.getElementById('showBtn');
+		var wrap = document.getElementById('wrap');
+		var box = document.getElementById('box');
+		// 显示遮罩层与样式选项表
+		btn.onclick = function() {
+			wrap.style.display = 'block';
+		}
+
+		//点击选项表的选项，让div的变成相应的样式
+		// 1.改变颜色
+		var yellow = document.getElementById('yellow');
+		var red = document.getElementById('red');
+		var green = document.getElementById('green');
+
+		yellow.onclick = function() {
+			box.style.background = 'yellow';
+			yellow.style.opacity = 1;
+			red.style.opacity = .5;
+			green.style.opacity = .5;
+		}
+		red.onclick = function() {
+			box.style.background = 'red';
+			yellow.style.opacity = .5;
+			red.style.opacity = 1;
+			green.style.opacity = .5;
+		}
+		green.onclick = function() {
+			box.style.background = 'green';
+			yellow.style.opacity = .5;
+			red.style.opacity = .5;
+			green.style.opacity = 1;
+		}
+		// 2.改变宽度
+		var width200 = document.getElementById('width200');
+		var width150 = document.getElementById('width150');
+		var width250 = document.getElementById('width250');
+
+		width200.onclick = function() {
+			box.style.width = '200px';
+			width200.style.background = '#ccc';
+			width250.style.background = '#fff';
+			width150.style.background = '#fff';
+		}
+		width250.onclick = function() {
+			box.style.width = '250px';
+			width200.style.background = '#fff';
+			width250.style.background = '#ccc';
+			width150.style.background = '#fff';
+		}
+		width150.onclick = function() {
+			box.style.width = '150px';
+			width200.style.background = '#fff';
+			width250.style.background = '#fff';
+			width150.style.background = '#ccc';
+		}
+		// 3.改变高度
+		var height200 = document.getElementById('height200');
+		var height150 = document.getElementById('height150');
+		var height250 = document.getElementById('height250');
+
+		height250.onclick = function() {
+			box.style.height = '250px';
+			height250.style.background = '#ccc';
+			height150.style.background = '#fff';
+			height200.style.background = '#fff';
+		}
+		height150.onclick = function() {
+			box.style.height = '150px';
+			height250.style.background = '#fff';
+			height150.style.background = '#ccc';
+			height200.style.background = '#fff';
+		}
+		height200.onclick = function() {
+			box.style.height = '200px';
+			height250.style.background = '#fff';
+			height150.style.background = '#fff';
+			height200.style.background = '#ccc';
+		}
+
+
+		//点击最终按钮，让遮罩层消失
+		// 1.点击确定按钮，div保持被改的样式
+		var determine = document.getElementById('determine');
+		determine.onclick = function() {
+			wrap.style.display = 'none';
+		}
+		// 2.点击恢复按钮，div恢复原来的样式
+		var restore = document.getElementById('restore');
+		restore.onclick = function() {
+			box.style.background = '';
+			box.style.width = '';
+			box.style.height = '';
+			wrap.style.display = 'none';
+			yellow.style.opacity = .5;
+			red.style.opacity = .5;
+			green.style.opacity = .5;
+			width250.style.background = '#fff';
+			width150.style.background = '#fff';
+			width200.style.background = '#fff';
+			height200.style.background = '#fff';
+			height250.style.background = '#fff';
+			height150.style.background = '#fff';
+		}	
+	</script>
+</body>
+</html>
