@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<!-- 
+	if 如果
+		条件成立时if后面括号内的内容为true否则为false，有三种情况
+		1.只有一种情况要处理就只用
+			if(判断条件){
+				条件成立后执行的代码
+			}
+		2.有两种情况要处理就用
+			if(判断条件){	
+				条件成立后执行的代码
+			}else{
+				条件不成立时执行的代码
+			}
+		3.有三种以上情况要处理就用
+			if(判断条件) {
+				条件成立后执行的代码
+			} else if(条件不成立时要判断的条件) {
+				else if里的条件成立时执行的代码
+			} else {
+				所有条件都不成立时执行的代码
+			}
+	 -->
+	 <script type="text/javascript">
+	 	if(1<2) {
+	 		console.log(true);
+	 	}
+
+	 	if(1>2) {
+	 		console.log(true);
+	 	} else {
+	 		console.log(false);
+	 	}
+
+	 	if(1>2) {
+	 		console.log('1>2是对的');
+	 	} else if(1==2) {
+	 		console.log('1==2是对的');
+	 	} else {
+	 		console.log('上面都是错的');
+	 	}
+	 </script>
+</body>
+</html>
