@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#box {
+			width:200px;
+			height:200px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+<!-- 用第二种方式解决ej(if else).html里的需求 -->
+	<input type="button" id="btn" value="按钮">
+	<div id="box"></div>
+	<script type="text/javascript">
+		// 还是用if方法，但是判断条件不用style属性，用一个自定义变量的值来判断并修改div的样式
+
+		var btn = document.getElementById('btn');
+		var box = document.getElementById('box');
+		// 声明的开关变量
+		var on = 'block';
+		btn.onclick = function() {
+			if(on === 'block') {
+				box.style.display = 'none';
+				on = 'none';
+				console.log(on);
+			} else {
+				box.style.display = 'block';
+				on = 'block';
+				console.log(on);
+			}
+		}
+	</script>
+</body>
+</html>
