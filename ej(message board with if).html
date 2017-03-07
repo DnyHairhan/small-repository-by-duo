@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#board {
+			width:200px;
+			height:500px;
+			border:1px solid #cc0;
+		}
+	</style>
+</head>
+<body>
+<!-- 需求：
+	点击按钮，把输入的内容显示在对话框里
+-->
+	<input type="text" id="text">
+	<input type="button" id="btn" value="提交">
+	<ul id="board">
+	</ul>
+
+	<script type="text/javascript">
+		var btn = document.getElementById('btn');
+		var board = document.getElementById('board');
+		var text = document.getElementById('text');
+		// 这里有两点要注意
+		// 1.用innerHTML时要考虑到它有覆盖之前的内容的作用，所以要用追加+=
+		// 2.input里面的内容不能用innerHTML获取和设置，要用value
+		btn.onclick = function() {
+			board.innerHTML += '<li>'+text.value+'</li>';
+		}
+	</script>
+</body>
+</html>
