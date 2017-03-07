@@ -10,6 +10,10 @@
 	</div>
 	<!-- innerHTML
 		获取到的是标签对里的所有内容（包含里边的标签）
+		
+		注意：
+			1.用innerHTML时要考虑到它有覆盖之前的内容的作用，所以要用追加+=
+			2.input里面的内容不能用innerHTML获取和设置，要用value
 	 -->
 	<script type="text/javascript">
 		var box = document.getElementById('box');
