@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>	
+	<style type="text/css">
+		img {
+			width:300px;
+		}
+	</style>
+</head>
+<body>
+	<!-- 需求：
+		点击下一张图片切换到下一张
+		点击上一张图片切换到上一张
+	-->
+
+	<div style="padding-bottom:10px;">	
+		<input type="button" id="btn1" value="上一张">
+		<input type="button" id="btn2" value="下一张">
+	</div>
+	<img src="1.jpg" id="pic">
+	<script type="text/javascript">
+		var btn1 = document.getElementById('btn1');
+		var btn2 = document.getElementById('btn2');
+		var pic = document.getElementById('pic');
+		
+
+
+		// 下面这种方法只能用于有规律的图片路径,++ 和 --是算数运算符，运算结果相当于++ 或 --左边的数字本身加上一,n++ 也可以写成 n += 1,或者 n = n + 1 ,减法同样
+
+
+
+		var n = 1;
+		// 这是上一张的操作
+		btn1.onclick = function() {
+			n--;
+			// 判断n的数字小于1的时候n的值就转变成3，否则一直减
+			if(n<1) {
+				n=3;
+			}
+			pic.src = n + '.jpg';
+			console.log(n);
+		}
+
+
+		// 这是下一张的操作
+		btn2.onclick = function() {
+			n++;
+			// 判断n的数字大于3的时候n的值就转变成1，否则一直加
+			if(n>3) {
+				n=1;
+			}
+			pic.src = n + '.jpg';
+			console.log(n);
+		}
+	</script>
+</body>
+</html>
