@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<!-- getElementsByClassName(class名字) 
+	主语：
+		document =>从整个文档中找元素
+		父级 =>从父级下面找
+	获取到的是一个类数组
+	-->
+	<ul id="colorList">
+		<li class="color">red</li>
+		<li class="color">yellow</li>
+		<li class="color">green</li>
+		<li class="color">blue</li>
+		<li>pink</li>
+		<li>grey</li>
+	</ul>
+	<ul>
+		<li class="color">red</li>
+		<li class="color">pink</li>
+		<li class="color">green</li>
+		<li class="color">blue</li>
+		<li>yellow</li>
+		<li>grey</li>
+	</ul>
+	<script type="text/javascript">
+		var lis = document.getElementsByClassName('color');
+		var colorList = document.getElementById('colorList');
+		var colorListLis = colorList.getElementsByClassName('color');
+		lis[0].style.background = 'red';
+		// 这里注意一点，找最后一个元素的时候必须指明哪组元素的最后一个比如说lis.length-1，不能直接写成length-1
+		lis[lis.length-1].style.background = 'red';
+		colorListLis[colorListLis.length-1].style.background = 'yellow';
+	</script>
+</body>
+</html>
