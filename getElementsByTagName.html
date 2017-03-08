@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<!-- 
+		document.getElementById(id名)
+		通过id名获取一个元素，它只有一个主语，document
+
+		getElementsByTagName(标签名)
+		通过标签名获取一组元素
+		主语（限制范围）：
+			document => 从整个文档中获取元素
+			父级 => 从父级下获取元素
+		它获取到的是一个元素的集合，是个类数组
+
+		类数组：类似数组有length属性，每一个数据也有对应的下标，但是别的数组的特性它不具备
+
+	-->
+
+	<ul id="colorList">
+		<li>red</li>
+		<li id="blue">blue</li>
+		<li>green</li>
+		<li>yellow</li>
+		<li>pink</li>
+		<li>grey</li>
+	</ul>
+	<ul>
+		<li>red</li>
+		<li>blue</li>
+		<li id='green'>green</li>
+		<li>yellow</li>
+		<li>pink</li>
+		<li>grey</li>
+	</ul>
+	<script type="text/javascript">
+		var lis = document.getElementsByTagName('li');
+		var uls = document.getElementsByTagName('ul');
+		var colorList = document.getElementById('colorList');
+		// var ulLis = uls.getElementsByTagName('li');  这个会报错，因为获取到的uls是一个类数组，不能直接操作一个类数组，得用下标标出用的是哪一个数据
+		var colorListLis = colorList.getElementsByTagName('li');
+		// var colorListBlue = colorList.getElementById('blue');  这个会报错，获取时主语只能用document
+
+		// lis.style.background = '#ccc'; 会报错因为lis是类数组，所以不能直接用lis操作
+		lis[0].style.background = 'red';
+
+		colorListLis[2].style.background = 'green';
+	</script>
+</body>
+</html>
