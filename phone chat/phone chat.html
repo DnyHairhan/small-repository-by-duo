@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		div,span,input,button,ul,li {
+			padding: 0;
+			margin:0;
+		}
+		li {
+			list-style: none;
+		}
+		.avatar {
+	 		width:24px;
+	 		height:24px;
+		}
+		#wrap {
+			position: relative;
+			width:289px;
+			height:594px;
+			background: url('img/mobile.png') repeat;
+		}
+	 	#screen {
+	 		position: absolute;
+	 		top:87px;
+	 		left:26px;
+	 		right:23px;
+	 		width:238px;
+	 		height:419px;
+	 	}
+	 	#dialogBox {
+	 		position: absolute;
+	 		top:0;
+	 		right:0;
+	 		left: 0;
+	 		bottom:30px;
+	 		overflow:auto;
+	 	}
+	 	#dialog {
+	 		position: absolute;
+	 		top:0;
+	 		left: 0;
+	 		right:0;
+	 	}
+	 	li {
+	 		float: left;
+	 		width:100%;
+	 	}
+	 	.content {
+	 		display: block;
+	 		max-width: 150px;
+	 		border-radius: 7px;
+	 		padding:5px;
+	 		margin:10px 0;
+	 		word-wrap:break-word; 
+	 		word-break:normal;	
+	 	}
+	 	.dialog .avatar {
+	 		margin:10px;
+	 	}
+	 	.left .avatar{
+	 		float: left;
+	 	}
+	 	.left .content{
+	 		background: #2be82b;
+	 		float: left;
+	 	}
+	 	.right .avatar{
+	 		float: right;
+	 	}
+	 	.right .content{
+	 		background: #ffeb3b;
+	 		float: right;
+	 	}
+	 	.inputBox {
+	 		position: absolute;
+	 		bottom: 0;
+	 		left: 0;
+	 		right:0;
+	 		width:235px;
+	 		height:30px;
+	 		border-top:1px solid #7d7d86;
+	 	}
+	 	.inputBox .avatar {
+	 		float: left;
+	 		margin:3px;
+	 		cursor: pointer;
+	 	}
+	 	#val {
+	 		width:150px;
+	 		height:17px;
+	 		margin-top: 4px;
+	 	}
+	 	#btn {
+	 		width:40px;
+	 		margin-top: 5px;
+	 	}
+	</style>
+</head>
+<body>
+	<!-- 需求
+		1.点击发送按钮把输入的内容显示在对话框内
+		2.点击头像切换头像图片
+		3.切换头像后再次点击发送按钮时，在对话框的位置发生左右改变
+	-->
+	<div id="wrap">
+		<div id="screen">
+			<div id="dialogBox">
+				<ul class="dialog" id="dialog"></ul>
+			</div>
+			<div class="inputBox" id="inputBox">	
+				<img src="img/1.png" class="avatar" id="avatar">
+				<input type="text" id="val">
+				<button id="btn">发送</button>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var btn  = document.getElementById('btn');
+		var val = document.getElementById('val');
+		var dialog = document.getElementById('dialog');
+		var avatar = document.getElementById('avatar');
+
+		// 头像的路径数组
+		var avatarArr = ['1.png', '2.png'];
+		
+		// 用于判断头像
+		var on = true;
+		
+		// 点击发送按钮
+		btn.onclick = function() { 
+			// 输入框输入的内容
+			var value = val.value;
+			// 当输入的内容为空的时候不能发送,return 用来终止下面代码的执行
+			if(value == '') {
+				return;
+			}
+			// 发送的时候要判断头像
+			if(on) {
+				var li = '<li class="left">\
+						<img class="avatar" src="img/'+ avatarArr[0] +'">\
+						<span class="content">'+ value +'</span>\
+					</li>';
+					
+			} else {
+				var li = '<li class="right">\
+						<img class="avatar" src="img/'+ avatarArr[1] +'">\
+						<span class="content">'+ value +'</span>\
+					</li>';
+			}
+			
+			// 把内容传送到对话框里
+			dialog.innerHTML += li;
+			// 清空输入框的内容
+			val.value = '';
+		}
+
+		// 切换头像
+		avatar.onclick = function() {
+			if(on) {
+				avatar.src = 'img/'+ avatarArr[1];
+				on = false;
+			} else {
+				avatar.src = 'img/'+ avatarArr[0];
+				on = true;
+			}	
+		}
+	</script>
+</body>
+</html>
