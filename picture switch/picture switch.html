@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		.wrap {
+			margin:auto;
+			width:500px;
+			height:500px;
+		}
+		span {
+			font-size: 20px;
+			font-weight: bold;
+			color: #ccc;
+		}
+		.btnBox {
+			width: 100%;
+			height:50px;
+			text-align: center;
+			line-height: 50px;
+		}
+		.picBox {
+			position: relative;
+			width:100%;
+			height:450px;
+			background:url('1.jpg');
+			background-size: 100% 100%;
+			border:3px solid #ccc;
+		}
+		.picBox span {
+			text-align: center;
+			line-height: 50px;
+			font-size: 20px;
+		}
+		.pageNumber {
+			display: block;
+			width:100%;
+			height:50px;
+			background: rgba(0,0,0,.5);
+		}
+		.pageName {
+			position: absolute;
+			left: 0;
+			right:0;
+			bottom:0;
+			height:50px;
+			background:rgba(0,0,0,.5); 
+		}
+		.direction {
+			margin-top: 150px;
+			background: red;
+		}
+		.direction span {
+			float: left;
+			width: 50px;
+			background: rgba(0,0,0,.5);
+		}
+		.direction span:hover {
+			background: rgba(0,0,3,.7);
+		}
+		.right {
+			margin-left:400px; 
+		}
+	</style>
+</head>
+<body>
+	<!-- 需求：
+		1.点击左箭头图片倒着切换，点击右箭头图片顺着切换
+		2.点击的时候上面数字与下面文字都要变化
+		3.点击顺序切换时，图片只能切换到最后一张或者第一张，点击循环切换，图片一直循环
+	-->
+	<div class="wrap">
+		<div class="btnBox">
+			<input type="button" class="btn" id="btn1" value="顺序切换">
+			<input type="button" class="btn" id="btn2" value="循环切换">
+		</div>
+		<div id="picBox" class="picBox">
+			<span id="pageNumber" class="pageNumber">1/5</span>
+			<div class="direction">
+				<span id="left" class="left"><</span>
+				<span id="right" class="right">></span>
+			</div>
+			<span id="pageName" class="pageName">第一张图片</span>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var btn1 = document.getElementById('btn1');
+		var btn2 = document.getElementById('btn2');
+		var left = document.getElementById('left');
+		var right = document.getElementById('right');
+		var picBox = document.getElementById('picBox');
+		var pageNumber = document.getElementById('pageNumber');
+		var pageName = document.getElementById('pageName');
+		// 这个是图片路径数组
+		var picArr = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'];
+		// 这个是对应图片的文字数组
+		var nameArr = ['第一张图片', '第二张图片', '第三张图片', '第四张图片', '第五张图片'];
+		// n用来控制数组数据
+		var n = 0;
+		
+		// on用来判断是顺序循环
+		var on = true;
+		
+		// 点击左箭头操作
+		left.onclick = function() {
+			n--;
+			if(on) {
+				if(n<0) {
+					n = 0;
+				}
+			} else {
+				if(n<0) {
+					n = 4;
+				}
+			}
+			
+			picBox.style.background = 'url("'+ picArr[n] +'")';
+			picBox.style.backgroundSize = '100% 100%';
+			pageNumber.innerHTML = n+1+'/5';
+			pageName.innerHTML = nameArr[n];
+		}
+		
+		// 点击右箭头操作
+		right.onclick = function() {
+			n++;
+			if(on) {
+				if(n>4) {
+					n = 4;
+				}
+			} else {
+				if(n>4) {
+					n = 0;
+				}
+			}
+
+			picBox.style.background = 'url("'+ picArr[n] +'")';
+			picBox.style.backgroundSize = '100% 100%';
+			pageNumber.innerHTML = n+1+'/5';
+			pageName.innerHTML = nameArr[n];
+		}
+
+		// 点击顺序操作
+		btn1.onclick = function() {
+			on = true;
+		}
+		
+		// 点击循环操作
+		btn2.onclick = function() {
+			on = false;
+		}
+	</script>
+</body>
+</html>
