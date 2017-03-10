@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		.wrap {
+			margin:auto;
+			width:700px;
+			height:356px;
+		}
+		.btnBox {
+			width:100%;
+			height:50px;
+			text-align: center;
+			line-height: 50px;
+		}
+		.picBox {
+			width:100%;
+			height:306px;
+		}
+		.box {
+			float: left;
+			border:3px solid #ccc;
+			height:300px;
+			position: relative;
+		}
+		.leftBox {
+			width:390px;
+		}
+		.rightBox {
+			margin-left:9px;
+			width:290px;
+		}
+		.picNumber {
+			position: absolute;
+			top:0;
+			width:100%;
+			height:30px;
+			background: rgba(0,0,0,.5);
+			text-align: center;
+			line-height: 30px;
+			color: #ccc;
+		}
+		.picNumber:hover {
+			background: rgba(0,0,0,.7);
+		}
+		img {
+			width:100%;
+			height:100%;
+		}
+	</style>
+</head>
+<body>	
+	<!-- 
+		需求：
+			1.左边的图片一共有5张，右边的3张
+			2.点击上一组图片，两组图片同时切换到上一张，点击下一组，两组图片同时切换到下一张
+			3.图片上面的数字也跟着改变
+	-->
+	<div class="wrap">
+		<div class="btnBox">
+			<input type="button" id="btn1" value="上一组">
+			<input type="button" id="btn2" value="下一组">
+		</div>
+		<div class="picBox">
+			<div class="box leftBox">
+				<span class="picNumber">1/5</span>
+				<img id="pic1" src="1.jpg">
+			</div>
+			<div class="box rightBox">
+				<span class="picNumber">1/3</span>
+				<img id="pic2" src="6.jpg">
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var btn1 = document.getElementById('btn1');
+		var btn2 = document.getElementById('btn2');
+		var pic1 = document.getElementById('pic1');
+		var pic2 = document.getElementById('pic2');
+		var picNumbers = document.getElementsByClassName('picNumber');
+		// 左边图片的路径数组
+		var leftPicArr = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'];
+
+		// 右边图片的路径数组
+		var rightPicArr = ['6.jpg', '7.jpg', '8.jpg'];
+		
+		// 用n控制左边的图
+		var n = 0;
+
+		// 用m控制右边的图
+		var m = 0;
+		
+		// 点击上一组操作
+		btn1.onclick = function() {
+			n--;
+			m--;
+			// 判断左边的图片
+			if(n<0) {
+				n = leftPicArr.length-1;
+			}
+
+
+			// 判断右边的图片
+			if(m<0) {
+				m = rightPicArr.length-1;
+			}
+			pic1.src = leftPicArr[n];
+			pic2.src = rightPicArr[m];
+			picNumbers[0].innerHTML = n+1 +'/'+ leftPicArr.length;
+			picNumbers[1].innerHTML = m+1 +'/'+ rightPicArr.length;
+
+		}
+
+		// 点击下一组操作
+		btn2.onclick = function() {
+			n++;
+			m++;
+
+			// 判断左边的图片
+			if(n>leftPicArr.length-1) {
+				n = 0;
+			}
+
+			// 判断右边的图片
+			if(m>rightPicArr.length-1) {
+				m = 0;
+			}
+
+			pic1.src = leftPicArr[n];
+			pic2.src = rightPicArr[m];
+			picNumbers[0].innerHTML = n+1 +'/'+ leftPicArr.length;
+			picNumbers[1].innerHTML = m+1 +'/'+ rightPicArr.length;
+		}
+	</script>
+</body>
+</html>
