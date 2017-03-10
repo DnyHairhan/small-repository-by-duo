@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<!-- for循环
+	根据一定的条件，重复的执行一行或多行代码
+
+	语法
+	for(条件初始化;条件判断;条件变化) {
+		当条件成立的时候重复执行这里的代码
+	}
+	for循环的运行过程
+	1.条件初始化
+	2.条件判断
+	3.条件判断成立后执行花括号内的代码
+	4.条件变化
+	5.条件判断
+	.
+	.
+	.
+	当判断条件不成立的时候就结束循环，不执行花括号内的代码，但是条件变化已经执行一步，所以初始化的变量的最后值是条件变化后的值
+	
+	for循环的运行条件，要操作一组元素的时候用
+-->
+	<ul id="ul1">
+		<li>red</li>
+		<li>red</li>
+		<li>red</li>
+		<li>red</li>
+		<li>red</li>
+		<li>red</li>
+	</ul>
+	<ul id="ul2">
+		<li>red</li>
+		<li>red</li>
+		<li>red</li>
+		<li>red</li>
+		<li>red</li>
+		<li>red</li>
+	</ul>
+	<script type="text/javascript">
+		var ul1 = document.getElementById('ul1');
+		var ul2 = document.getElementById('ul2');
+		var lis1 = ul1.getElementsByTagName('li');
+		var lis2 = ul2.getElementsByTagName('li');
+
+		// 不用for循环时的代码
+		lis1[0].style.background = 'yellow';
+		lis1[1].style.background = 'yellow';
+		lis1[2].style.background = 'yellow';
+		lis1[3].style.background = 'yellow';
+		lis1[4].style.background = 'yellow';
+		lis1[5].style.background = 'yellow';
+		// 用for循环解决上面的重复代码的问题
+		for(var i = 0; i<lis2.length ; i++) {
+			// lis[i]下标从0 开始的每一个li
+			lis2[i].style.background = 'red';
+		}
+	</script>
+</body>
+</html>
