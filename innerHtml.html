@@ -20,5 +20,17 @@
 		console.log(box['innerHTML']); //<p id="p">这里是内容部分</p>
 		console.log(box.innerHTML); //<p id="p">这里是内容部分</p>
 	</script>
+
+
+
+	<!-- 
+	如果用var 直接声明一个变量值为标签对 ，就无法用innerHTML操作这个标签的内容，如果想自己创建标签就要用dom的方法document.createElement('标签名');但这样创建的标签不能成为别的标签的innerHTML，只能用dom的append等方式再把标签放到别的标签内 
+	 -->
+
+	<script type="text/javascript">
+		var div = document.createElement('div');
+		div.innerHTML = 1;
+		console.log(div.innerHTML);
+	</script>
 </body>
 </html>
