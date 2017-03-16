@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		span {
+			margin-right: 5px;
+		}
+	</style>
+</head>
+<body>
+	<!--
+	需求： 
+		用for循环实现99乘法表
+	-->
+	<div class="wrap" id="wrap">
+		
+	</div>
+	<script type="text/javascript">
+		var wrap = document.getElementById('wrap');
+		for(var i = 1; i < 10; i++) {
+			for(var j = 1; j <= i; j++){
+				var span = '<span>'+ j + '*' + i + '=' + i*j +'</span>';
+				wrap.innerHTML += span;
+			}
+			wrap.innerHTML += '</br>';
+		}		
+	</script>
+</body>
+</html>
