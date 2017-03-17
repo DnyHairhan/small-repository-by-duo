@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<!-- 
+	系统自带的属性
+		style, class, id, value, src, type
+	当系统自带的属性不能满足我们的需求时我们需要自定义属性，而用法跟系统自带的属性一样
+	-->
+	<input type="button" id="btn" value="按钮">
+	<script type="text/javascript">
+		var btn = document.getElementById('btn');
+		console.log(btn.type); //button
+		console.log(btn.value); //按钮
+		btn.btnName = '自定义属性';
+		console.log(btn.btnName); //自定义属性
+	</script>
+</body>
+</html>
