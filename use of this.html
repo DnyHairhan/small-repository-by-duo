@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<!-- 点击文字让文字变相应的颜色 -->
+	<ul class="list">
+		<li>red</li>
+		<li>yellow</li>
+		<li>blue</li>
+		<li>green</li>
+		<li>pink</li>
+	</ul>
+	<script type="text/javascript">
+		var lis = document.getElementsByTagName('li');
+		for(var i = 0; i < lis.length; i++) {
+			// 在循环里这是对每一个li都绑上点击事件
+			lis[i].onclick = function() {
+				// 当点击某一个li时在函数内this可以代表这个被点击的li，而不是lis[i]，因为在点击之前循环已经结束i的值是lis.length，是不符合循环条件，所以会报错
+				// this.style.background = this.innerHTML; 
+				// lis[i].style.background = red; 没有符合的li可以设置style属性
+			}
+		}
+	</script>
+</body>
+</html>
