@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		.wrap {
+			position: relative;
+			width:500px;
+			height:500px;
+			background: #ccc;
+		}
+		.box {
+			position: absolute;
+			width:50px;
+			height:50px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<!--用几个方块拼成张口向右V字 -->
+	<div id="wrap" class="wrap"></div>
+
+	<script type="text/javascript">
+		var wrap = document.getElementById('wrap');
+		var n = 7;
+		var t = -1;
+		var l = Math.ceil(n / 2);
+		for(var i = 0; i < n; i++) {
+			t++;
+			if(i<n/2) {
+				l--;
+			} else {
+				l++;
+			}
+			var div = '<div class="box" style="left:'+ l*50 +'px;top:'+ t*50 +'px;"></div>';
+			wrap.innerHTML += div;
+			console.log(l)
+		}
+	</script>
+</body>
+</html>

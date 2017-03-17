@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		.wrap {
+			position: relative;
+			width:500px;
+			height:500px;
+			background: #ccc;
+		}
+		.box {
+			position: absolute;
+			width:50px;
+			height:50px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<!-- 用几个方块实现张口向左的v字 -->
+	<div id="wrap" class="wrap"></div>
+	<script type="text/javascript">
+		var wrap = document.getElementById('wrap');
+		var t = 0;
+		var l = -1;
+
+		var n = 7;
+		for(var i = 0; i < n; i++) {
+			t = i;
+			if(i < n/2) {
+				l++;
+			} else {
+				l--;
+			}
+			var div = '<div class="box" style="left:'+ l*50 +'px;top:'+ t*50 +'px;"></div>';
+			wrap.innerHTML += div;
+		}
+	</script>
+</body>
+</html>
