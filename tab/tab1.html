@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		.box {
+			width:200px;
+			height:200px;
+			border:1px solid #000;
+			font-size: 20px;
+			font-size: bolder;
+			text-align: center;
+			line-height: 200px;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+<!-- 选项卡
+	需求：
+		1.点击按钮显示对应的div
+		2.其他的div隐藏
+		3.被点击的按钮本身变成黄色
+-->
+	<div class="wrap">
+		<input type="button" class="btn1" value="按钮1">
+		<input type="button" class="btn2" value="按钮2">
+		<input type="button" class="btn3" value="按钮3">
+		<div class="box">box1</div>
+		<div class="box">box2</div>
+		<div class="box">box3</div>
+	</div>
+	<script type="text/javascript">
+
+	// 先把所有的都隐藏，然后点击哪一个显示哪一个
+		var btns = document.getElementsByTagName('input');
+		var boxs = document.getElementsByClassName('box');
+		btns[0].style.background = 'yellow';
+		boxs[0].style.display = 'block';
+		for(var i = 0; i < btns.length; i++) {
+			btns[i].index = i;
+			btns[i].onclick = function() {
+				for(var j = 0; j < btns.length; j++) {
+					btns[j].style.background = '';
+					boxs[j].style.display = 'none';
+				}
+				this.style.background = 'yellow';
+				boxs[this.index].style.display = 'block';
+			}
+		}
+	</script>
+</body>
+</html>
