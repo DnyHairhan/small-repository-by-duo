@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<!-- 需求：
+	1.页面刷新时星星的状态是没有颜色
+	2.鼠标移入某个星星时从移入的星星之前的都变颜色，如果只是前两个星星就是灰色，如果是三个以上就为黄色
+	3.鼠标移出星星时
+		如果有被点击过就恢复被点击后的状态，否则全部失去颜色
+	4.鼠标点击到星星时保存移入时改变的颜色
+
+
+	注意：这里用了两种方法，备注是的是一种方法
+ -->
+ 	<div class="wrap">
+ 		<span>总体评价：</span>
+		<img src="img/xing.png">
+		<img src="img/xing.png">
+		<img src="img/xing.png">
+		<img src="img/xing.png">
+		<img src="img/xing.png">
+ 		<span id="standard"></span>
+ 	</div>
+ 	<script type="text/javascript">
+ 		var stars = document.getElementsByTagName('img');
+ 		var standard = document.getElementById('standard');
+
+ 		// 这个是评价标准的词组成的数组
+ 		var arrStandard = ['很差', '较差', '一般', '良好', '优秀','还没有评分哦！'];
+ 		var n = 5;
+ 		standard.innerHTML = arrStandard[n];
+ 		// 循环所有星星
+ 		for(var i=0; i<stars.length; i++) {
+ 			stars[i].index = i;
+ 			// stars[i].on = false;
+ 			// 移入时考虑两种情况
+ 			stars[i].onmouseover = function() {
+ 				for(var i=0; i<stars.length; i++) {
+ 					stars[i].src = 'img/xing.png';
+ 				}
+
+ 				// 这个是先判断有几颗星星再循环
+ 				// if(this.index > 1) {
+ 				// 	for(var i=0; i<=this.index; i++) {
+ 				// 		stars[i].src = "img/xing2.png";
+ 				// 	}
+ 				// } else {
+ 				// 	for(var i=0; i<=this.index; i++) {
+ 				// 		stars[i].src = "img/xing1.png";
+ 				// 	}
+ 				// }
+
+ 				// 这个是先循环被移入的星星，在判断是几颗
+ 				for(var i=0; i<=this.index; i++) {
+					stars[i].src = 'img/xing1.png';
+ 					if(this.index>1) {
+ 						stars[i].src = 'img/xing2.png';
+ 					}
+ 				}
+ 				standard.innerHTML = arrStandard[this.index];
+ 			}
+
+ 			// 点击星星的操作
+ 			stars[i].onclick = function() {
+ 				n = this.index;
+ 				// 让所有的星星都失去颜色
+ 				for(var i=0; i<stars.length; i++) {
+ 					// stars[i].on = false;
+ 					stars[i].src = 'img/xing.png';
+ 				}
+
+ 				// 这个是先判断后循环
+ 				// // 给被选中的星星添加颜色
+ 				// if(this.index > 1) {
+ 				// 	for(var i=0; i<=this.index; i++) {
+ 				// 		stars[i].on = true;
+ 				// 		stars[i].src = "img/xing2.png";
+ 				// 	}
+ 				// } else {
+ 				// 	for(var i=0; i<=this.index; i++) {
+ 				// 		stars[i].on = true;
+ 				// 		stars[i].src = "img/xing1.png";
+ 				// 	}
+ 				// }
+
+ 				// 这个是县循环后判断
+ 				for(var i=0; i<=this.index; i++) {
+					stars[i].src = 'img/xing1.png';
+ 					if(this.index>1) {
+ 						stars[i].src = 'img/xing2.png';
+ 					}
+ 				}
+ 				standard.innerHTML = arrStandard[this.index];
+ 			}
+
+ 			// 鼠标移出星星
+ 			stars[i].onmouseout = function() {
+				// 这是先循环所有星星，从中找到on是true的星星在判断n的大小
+				// for(var i=0; i<stars.length; i++) {
+				// 	if(stars[i].on && n<2) {
+				// 		stars[i].src = 'img/xing1.png';
+				// 	} else if(stars[i].on && n>=2) {	
+				// 		stars[i].src = 'img/xing2.png';
+				// 	} else {
+				// 		stars[i].src = 'img/xing.png';
+				// 	}
+				// }
+
+				// 这个是先把所有的星星都去掉颜色，再直接用n来循环和判断星星的颜色
+				for(var i=0;i<stars.length;i++) {
+					stars[i].src = 'img/xing.png';
+				}
+				if(n <5){
+					for(var i=0;i<=n;i++) {
+						stars[i].src = 'img/xing1.png';
+						if(n>1) {
+	 						stars[i].src = 'img/xing2.png';
+	 					}
+					}	
+				}
+				standard.innerHTML = arrStandard[n];
+ 			}	
+ 		}
+ 	</script>
+</body>
+</html>
