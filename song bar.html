@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		div,ul,li,span,input {
+			margin:0;
+			padding:0;
+		}
+		.wrap {
+			margin:auto;
+			width:400px;
+			border:1px solid #000;
+		}
+		.list {
+			list-style: none;
+		}
+		.song {
+			height:30px;
+			line-height: 30px;
+		}
+		.song:nth-child(odd) {
+			background:#ccc;
+		}
+		.song:nth-child(even) {
+			background: #f9f;
+		}
+		.songName {
+			display: inline-block;
+			width: 200px;
+		}
+		.allCheckBox {
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body>
+	<!-- 需求：
+	1.当某一首歌的选框被选中时相对应的li会变成红色,当被选中时点击就会恢复原来未被选中时的颜色
+	2.所有的歌都备选中时全选的选框也成被选状态
+	3.一旦有一首歌没有被选中，全选就不会被选
+	4.当点击全选时，所有歌的状态为被选中
+	5.当取消全选时，所有歌也都被取消选中
+	6.鼠标移入li时li的颜色变成黄色，移出时变成原来的颜色，当li是已被选中状态时没有颜色变化
+	 -->
+	<div class="wrap">
+		<ul class="list">
+			<li class="song">
+				<input type="checkbox" class="check">
+				<span class="songName">刚好遇见你</span>
+				<span class="singer">李玉刚</span>
+			</li>
+			<li class="song">
+				<input type="checkbox" class="check">
+				<span class="songName">告白气球</span>
+				<span class="singer">周杰伦</span>
+			</li>
+			<li class="song">
+				<input type="checkbox" class="check">
+				<span class="songName">演员</span>
+				<span class="singer">薛之谦</span>
+			</li>
+			<li class="song">
+				<input type="checkbox" class="check">
+				<span class="songName">刚刚好</span>
+				<span class="singer">薛之谦</span>
+			</li>
+			<li class="song">
+				<input type="checkbox" class="check">
+				<span class="songName">线</span>
+				<span class="singer">刘惜君</span>
+			</li>
+			<li class="song">
+				<input type="checkbox" class="check">
+				<span class="songName">桃花旗袍</span>
+				<span class="singer">By2</span>
+			</li>
+		</ul>
+		<div class="allCheckBox">
+			<input type="checkbox" class="allCheck" id="allCheck">
+			<span class="allCheckName">全选</span>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var lis = document.getElementsByClassName('song');
+		var checks = document.getElementsByClassName('check');
+		var allCheck = document.getElementById('allCheck');
+		var n = 0; //用来控制被选中的歌曲个数
+		for(var i=0; i<checks.length; i++) {
+			// 这个是循环多有的li并用自定义属性把本身的颜色存起来
+			lis[i].bg = lis[i].style.background;
+			checks[i].index = i;
+			lis[i].index = i;
+			// 这个是点击某首歌曲时的操作
+			checks[i].onclick = function() {
+				// 判断选框有没有被选中就用checked属性的值，true或者false
+				if(this.checked) {
+					lis[this.index].style.background = 'red';
+					n++;
+				} else {
+					lis[this.index].style.background = lis[this.index].bg;
+					n--;
+				}
+				// 如果n>=所有歌曲的总数，全选就被选上，否则就是少于总数，全选被取消
+				if(n>=lis.length) {
+					allCheck.checked = true;
+				} else {
+					allCheck.checked = false;
+				}
+			}
+
+			// 这个是鼠标移入li的操作
+			lis[i].onmouseover = function() {
+				this.style.background = 'yellow';
+				if(checks[this.index].checked) {
+					this.style.background = 'red';	
+				}
+			}
+
+			// 移出li的操作
+			lis[i].onmouseout = function() {
+				this.style.background = this.bg;
+				if(checks[this.index].checked) {
+					this.style.background = 'red';
+				}
+			}
+
+
+			// 这里是点击全选操作
+			allCheck.onclick = function() {
+				for(var i=0; i<lis.length; i++) {
+					checks[i].checked = this.checked;
+					if(this.checked) {
+						n= lis.length;
+						lis[i].style.background = 'red';	
+					} else {
+						n= 0;
+						lis[i].style.background = lis[i].bg;
+					}
+					
+				}
+			}
+		}
+	</script>
+</body>
+</html>
