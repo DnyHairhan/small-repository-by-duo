@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<!-- 模拟计算器加法 -->
+	<input type="text" id="leftNumber">
+	<span class="plus">+</span>
+	<input type="text" id="rightNumber">
+	<input type="button" id="btn" value="=">
+	<span id="result"></span>
+
+	<script type="text/javascript">
+		var leftNumber = document.getElementById('leftNumber');
+		var rightNumber = document.getElementById('rightNumber');
+		var btn = document.getElementById('btn');
+		var result = document.getElementById('result');
+
+		// 点击=号
+		btn.onclick = function() {
+			// Number()方法是用来把其他类型转成数字类型
+			var leftValue = Number(leftNumber.value);
+			var rightValue = Number(rightNumber.value);
+			// 如果不用Number转成数字value的值就是字符串链接
+			var value = leftValue + rightValue;
+			// isNaN()是用来判断是不是NaN，儿通常用这个方法的反义来判断是不是纯数字
+			if(!isNaN(value)) {
+				result.innerHTML = value;	
+			} else {
+				result.innerHTML = '';
+			}
+			
+		}
+	</script>
+</body>
+</html>
