@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<!-- 
+	js 中的数据类型
+	基本数据类型
+		1.String 字符串
+			放在一对双引号或者单引号当中，有0个或者多个字符组成，而同样的引号不能互相嵌套，如果又嵌套就要转义\
+
+		2. Number 数字类型
+			1.由0-9之间的数字组成，可以是整数也可以是小数。
+				数字的+Infinity（正无穷）与-Infinity（负无穷）之间
+				数字的最大值：Number.MAX_VALUE
+				数字的最小值：NNumber.MIC_VALUE
+			2.NaN  not a number
+				当运算失败就会出现NaN，NaN与任何数字都不想等，包括自己
+		3.Boolean 布尔值
+			true 真
+			false 假
+		4.Undefined 未定义
+			它就只有undefined一个结果
+		5.Null 空
+			他就只有null一个结果
+
+	复合数据类型
+		1.Object 对象
+			由基本数据类型与复合数据类型任意组成。对象的数据是要放在一个花括号{}内，每个数据都由一对键值对组成，数据个数可以是0个或者多个，数据之间用逗号分隔，最后一个数据后面不能加逗号
+
+			键值对：key : value
+			key :可以放入引号，可以不放入引号内，当key不符合变量命名规则时要放入引号（数字除外），引号可以是单引号可以是双引号
+			value :key对应的值，它可以是基本数据类型，也可以是复合数据类型
+
+			操作对象数据中的某个数据就用属性操作方法
+
+			数组属于复合数据类型，可以说成是特殊类对象
+	 -->
+	 <script type="text/javascript">
+	 	var string = 'string';
+	 	var number1 = 1;
+	 	var number2 = NaN;
+	 	var boolean1 = true;
+	 	var boolean2 = false;
+	 	var u1 = undefined;
+	 	var n1 = null;
+	 	var arr = ['a', 'b', 'c'];
+	 	var obj = {
+	 		string:'string',
+	 		number:3,
+	 		Boolean:true,
+	 		undefined:undefined,
+	 		null:null,
+	 		'null2':'null',
+	 		arr:['a'],
+	 		object:{}
+	 	};
+
+	 	console.log(string);
+	 	console.log(number1+':'+number2);
+	 	console.log(obj.number);
+	 	console.log(obj);
+	 	console.log(obj['null2']); //这个是字符串null
+	 	console.log(obj.null); 
+	 </script>
+	 <!-- 
+	 typeof
+	是用来检测数据类型的，返回值是对应的数据类型，结果是以一个字符串形式显示与系统定义的类型有区别
+
+	typeof 是一种运算符
+	语法
+		typeof(要检测的数据)
+		typeof 要检测的数据
+
+	系统当中定义的类型   typeof返回的类型
+	String               string
+	Number               number
+	Boolean              boolean
+	Undefined            undefined
+	Null                 object
+	Object               object
+	注意：
+	Array 的typeof结果object
+	function 属于特殊对象
+	function的typeof 结果function
+	  -->
+
+	<script type="text/javascript">
+		var str = 'a';
+		console.log(typeof str); //string
+		var num = 1;
+		console.log(typeof num); //number
+		var bool = true;
+		console.log(typeof(bool)); //boolean
+		var un = undefined;
+		console.log(typeof(un)); //undefined
+		var nul = null;
+		console.log(typeof nul); //object
+		var obj = {};
+		console.log(typeof obj); //object
+		var fn = function() {};
+		console.log(typeof fn); //function
+		var arr = [];
+		console.log(typeof arr); //object
+	</script>
+</body>
+</html>
