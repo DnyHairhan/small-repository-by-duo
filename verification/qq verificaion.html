@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<!-- 需求：
+	1.有没有输入
+	3.不能是小数
+	4.输入5~10位纯数字
+	5.不能以0开头
+ -->
+	<span>请输入QQ号</span>
+	<input type="text" id="qq">
+	<input type="button" id="btn" value="验证">
+	<span id="prompt"></span>
+	<script type="text/javascript">
+		var qq = document.getElementById('qq');
+		var btn = document.getElementById('btn');
+		var prompt = document.getElementById('prompt');
+		btn.onclick = function() {
+			var value = qq.value;
+			// 验证有没有输入
+			if(value === '') {
+				prompt.innerHTML = '请输入QQ号';
+				return;
+			}
+			// 验证小数点
+			if(parseInt(value) !== parseFloat(value)) {
+				prompt.innerHTML = '不能有小数点';
+				return;
+			}
+			// 验证是不是纯数字
+			if(isNaN(value)) {
+				prompt.innerHTML = '清输入纯数字';
+				return;
+			}
+
+			// 验证是否5~10位数，从页面上获取到的都是字符串，而字符串也有length属性，指字符串长度，要想拿到字符串中的某个字段也可以通过下标来取到值，下表从0开始
+			if(value.length<5 || value.length>10) {
+				prompt.innerHTML = '输入5~10位纯数字';
+				return;
+			}
+
+			// 验证不能用0开头
+			if(value[0] === '0') {
+				prompt.innerHTML = '不能以0开头';
+				return;
+			}
+			prompt.innerHTML = '验证成功';
+		}
+	</script>
+</body>
+</html>
