@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		div, dl, dt, dd ,span{
+			margin:0;
+			padding:0;
+		}
+		.wrap {
+			width:200px;
+			border: 2px solid #000;
+		}
+		span {
+			display: block;
+		}
+		dt, span{
+			padding: 10px;
+		}	
+		dt {
+			background:#4df;
+			color: #fff;
+		}
+		dt.bg {
+			background: #44e;
+		}
+		dd {
+			display: none;
+			color: #000;
+		}
+		span.bg {
+			background: #e4e;
+		}
+		dd.active {
+			display: block;	
+		}
+	</style>
+</head>
+<body>
+<!-- 需求：
+	1.页面刷新时只能看到分组
+	3.点击其他分组时除了被点击的分组以外的列表都收起
+	4.被点击的分组背景颜色改变，相应的列表内容会展开，展开状态下点击此分组会收起，背景颜色变回原来的颜色
+	5.被点击的列表背景颜色改变，其他的变为原来的颜色
+	6.当分组被收起再打开时，列表是没有被选中的状态
+
+-->
+	<div class="wrap">
+		<dl>
+			<dt>我的好友</dt>
+			<dd id="firend">
+				<span>张三</span>
+				<span>李四</span>
+				<span>王五</span>
+				<span>赵六</span>
+			</dd>
+		</dl>
+		<dl>
+			<dt>企业好友</dt>
+			<dd id="colleague">
+				<span>阿里</span>	
+				<span>百度</span>	
+				<span>网易</span>	
+				<span>腾讯</span>	
+			</dd>
+		</dl>
+		<dl>
+			<dt>黑名单</dt>
+			<dd id="blacklist">
+				<span>小王</span>
+				<span>小李</span>
+				<span>小张</span>
+			</dd>
+		</dl>
+	</div>
+	<script type="text/javascript">
+		var dt = document.getElementsByTagName('dt');
+		var dd = document.getElementsByTagName('dd');
+		var spans = document.getElementsByTagName('span');
+		
+		// 用last来判断这次点击的跟上一次是不是同一个	
+		var last = -1;
+		for(var i=0; i<dt.length; i++) {
+			dt[i].index = i;
+			dt[i].onclick = function() {
+				if(this.index !== last) {
+					for(var i=0; i<dt.length; i++) {
+						dt[i].className = '';
+						dd[i].className = '';
+					}
+				}
+				if(this.className === 'bg'){
+					this.className = '';
+					dd[this.index].className = '';
+				} else {
+					this.className = 'bg';
+					dd[this.index].className = 'active';
+				}
+				last = this.index;
+				for(var i=0; i<spans.length; i++) {
+					spans[i].className = '';
+				}
+			}
+		}
+		
+		// 用lastSpan来判断这次点击的跟上一次是不是同一个
+		var lastSpan = -1;
+		for(var i=0; i<spans.length; i++) {
+			spans[i].index = i;
+			spans[i].onclick = function() {
+				if(this.index !== lastSpan) {
+					for(var i=0; i<spans.length; i++) {
+						spans[i].className = '';
+					}
+				}
+
+				if(this.className === 'bg') {
+					this.className = '';
+				} else {
+					this.className = 'bg';
+				}
+				lastSpan = this.index;
+			}
+		}
+	</script>
+</body>
+</html>
