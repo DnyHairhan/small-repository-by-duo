@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>	
+	<!-- 
+	运算符
+		算数运算符 +加, -减, *乘, /除, %取模, ++, --
+			1.取模时，如果前面的数字比后面的数字小结果就是前面的数字
+			2.取模的时候后面的数字不能为0，如果是0结果是NaN
+			3.++ -- 只能用于值为数字的变量
+				如果++放在前面就是先加后赋值，如果是在后面就是先赋值后加
+		赋值运算符 =, +=, -=, *=, /=, %=
+			a+=b; 与 a = a+b;
+				
+		关系运算符 <, >, <=, >=, ==, !=, ===, !==
+			关系运算符会把结果转成
+			==比较两个值是否相同，相同为true
+			!=比较两个值是否不相同，不相同为true
+			===比较两个值和两个值的类型是否完全相同，完全相同为true
+			!==比较两个值和两个值的类型是否不相同，不完全相同为true
+			
+			undefined 只与 null相等，如果是两个字符串做对比对比的是两个字符串对应的ascii码值
+		逻辑运算布尔值 &&并且， ||或， !否，三元运算符
+
+			&& 只有两边都为true的时候成立 ，如果左边为true返回右边的值，左边为false返回左边的值
+			|| 只要有一个为true就能成立，左边为true返回左边的值，左边为false返回右边的值
+			! 原来的结果为false，否定的结果为true的时候成立
+			三元运算符 a ? b : c; a成立的话结果是b，否则是c
+
+	
+	-->
+	<script type="text/javascript">
+		console.log(3%4); //3
+		console.log(3%0); //NaN
+		console.log(3+4); //4
+		console.log(3-4); //-1
+		console.log(3*4); //12
+		console.log(3/4); //0.75
+		var n = 3; 
+		// console.log(++3); //报错
+		console.log(n++); //3 先赋值，后加，n赋完值后是3，结果就是3
+		console.log(++n); //5 先加后赋值，因为上面的n++的结果已经是4，这里再加完1之后再赋的值所以就是5
+		var m = ++n; //m=6 n=6
+		// var m = n++; //m=5 n=6
+		console.log(m,n);
+
+		var a = 1;
+		var b = 2;
+		b+=a;
+		console.log(b,a); //3 1
+		b-=a;
+		console.log(b,a); //2 1
+		b*=a;
+		console.log(b,a); //2 1
+
+		var x = 2;
+		var y = '2';
+		console.log(x==y); // true
+		console.log(x!=y); // false
+		console.log(x===y); // false
+		console.log(x!==y); // true
+
+		console.log(undefined == null ); //true
+
+		console.log(undefined ===null); //false
+		console.log(undefined == false); //false
+
+
+		console.log(1 && 2); //2
+		console.log(0 && 2); //0
+		console.log(1 || 2); //1
+		console.log(0 || 2); //2
+		console.log(1>0 && 2<0); //false
+		console.log(1>0 && 2>0); //true
+		console.log(1>0 || 2<0); //true
+		var number = 1>0 ? 2 :3;
+		console.log(number); //2
+	</script>
+	<!-- 运算符优先级
+		. () []的优先级最高
+		() 可以提升优先级
+	-->
+</body>
+</html>
