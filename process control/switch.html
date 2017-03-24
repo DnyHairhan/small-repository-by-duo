@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<!-- 
+		switch 也是用来判断，跟if的效果基本一样，但是通常要判断的情况比较多的时候会用的到
+
+		语法:
+			switch(表达式（通常是变量）) {
+				case 值:
+					当case后面的值匹配表达式时执行这里的代码
+					break;
+				case 值:
+					当case后面的值匹配表达式时执行这里的代码
+					break;
+				default:
+					如果上面所有额case的值都不匹配就执行这里的代码
+			}
+
+			注意：
+				1.有几种情况的值就有几个case
+				2.break是用来阻止代码向下一个case执行，最好是有几个case有几个break
+				3.default要用在所有判断的最后
+	-->
+	<script type="text/javascript">
+		var n = 2;
+		switch(n) {
+			case 1:
+				console.log('周一');
+				break;
+			case 2:
+				console.log('周二');
+				break;
+			default:
+				alert('都不对');
+		}
+	</script>	
+</body>
+</html>
