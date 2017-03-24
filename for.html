@@ -62,6 +62,16 @@
 			// lis[i]下标从0 开始的每一个li
 			lis2[i].style.background = 'red';
 		}
+
+		// 注意：
+			// 对象没有length属性，for循环不用在对象上
+
+		var obj = {
+			a:1,
+			b:2,
+			c:3
+		};
+		console.log(obj.length); //undefined 
 	</script>
 </body>
 </html>
