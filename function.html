@@ -15,8 +15,6 @@
 		
 
 	<!-- 函数的分类第一种
-
-	对于初学者来说函数可以说成是有两种
 	1.匿名函数（没有函数名）
 		不能直接定义一个匿名函数，它是以一个给某个事件赋值的形式出现
 		window.onload = function() {}
@@ -25,7 +23,7 @@
 	<script type="text/javascript">
 		window.onload = function() {
 
-			alert('页面加载完后触发函数');
+			console.log('页面加载完后触发函数');
 		}
 	</script>
 
@@ -39,10 +37,164 @@
 
 	<script type="text/javascript">
 		function fn() {
-			alert('函数自己调用自己')
+			console.log('函数自己调用自己')
 		}
 
 		fn();
+	</script>
+
+	<!-- ************************************************************ -->
+	<!-- 
+		函数的第二种分类
+	1.函数声明
+		语法 
+			function 函数名(参数) {
+				要执行的代码
+			}
+
+		函数的调用
+			1.函数名(参数)
+			2.把函数声明变成函数表达式，然后加()
+				变成函数表达式的方法在函数声明前面加上+ - ！ ~ () 
+	
+	2.函数表达式
+		语法
+			var 变量名 = function(参数) {
+				要执行的代码
+			}
+		函数调用
+
+			1.变量名()
+			2.直接在函数后面加()
+
+		注意：如果函数表达式的function后面有名字，那不能拿这个名字去调用函数
+	-->
+	<script type="text/javascript">
+		function fn1(name) {
+			console.log(name);
+		}	
+
+		fn1('函数声明1');
+
+		var fn2 = function(name) {
+			console.log(name)
+		}
+
+		fn2('函数表达式1');
+
+		var fn3 = function fn4(name) {
+			console.log(name);
+		}
+
+		// fn4('函数声明2');  不能用fn4这个函数名来调用上面的函数。报错fn4 is not defined
+		fn3('函数表达式3');
+
+		// 函数声明改变成函数表达式
+		// function fn5() {
+		// 	console.log('函数声明');
+		// }()  函数声明不能直接在函数后面加()调用，会报错
+
+		!function fn5() {
+			console.log('函数表达式5');
+		}();
+
+		+function fn6() {
+			console.log('函数表达式6');
+		}();
+
+		~function fn7() {
+			console.log('函数表达式7');
+		}();
+
+		// 以上在function前面加一元符号的方法不常用,下面的()的方法用的比较多
+		// 注意：所有语句后面都要加分号
+		(function fn8() {
+			console.log('函数表达式8');
+		})();
+
+		// 而+new Date()的方法用的比较多，一下三个的结果都为毫秒为单位的时间戳
+		console.log(+new Date());
+		console.log(new Date().valueOf());
+		console.log(new Date().getTime());
+	</script>
+	<!-- *********************************************************** -->
+	<!-- 
+		函数的参数 
+			是从函数外面向函数内部传递的数据，可以放0 或者多个用逗号隔开
+		function fn(形参) {
+			执行的代码
+		}	
+		fn(实参);
+
+		形参是用在函数里面的，相当于在函数内声明一个变量，在函数调用的时候传入的实参是函数声明时形参的实际值
+		
+
+		注意：
+			实参与形参是一一对应的，在调用函数的时候，有几个形参传几个实参，不然形参的结果会undefined	
+	-->
+
+	<script type="text/javascript">
+		function fn(name) {
+			console.log(name);
+		}
+		fn('Lily');
+
+
+		function people(name, age, sex) {
+			console.log(name);
+			console.log(age);
+			console.log(sex);
+		}
+
+		people('Lily', 12, '女');  //Lily 12 女
+		people('Lily', 12); //Lily 12 undefined
+	</script>
+
+	<!-- ***************************************************************** -->
+	<!-- 
+		arguments 对象是所有实参的集合，类数组，arguments只能在函数内使用		
+	-->
+	<script type="text/javascript">
+		function fn9(x, y, z) {
+			console.log(arguments); //[1,2,3]
+			console.log(arguments[0]); //1
+			console.log(arguments.length); //3
+		}
+		fn9(1,2,3); 
+	</script>
+	<!-- ***************************************************** -->
+	<!-- 
+		return 的用途
+			1.函数的返回值
+			函数的返回值是指打印调用函数后的结果
+			return能够返回函数的运算结果，也就是返回值
+			如果函数内有return，并且后面跟着一个值，那这个函数返回结果就是return后面的值，如果没有return或者没有return后面的值，函数的默认返回值就是undefined
+			2.阻止函数继续运行
+			函数内一旦见到return后面的代码就不会执行
+	-->
+	<script type="text/javascript">
+		function fn10 (name,age) {
+			console.log(name, age); //返回值 undefined
+			return name;
+		}
+
+		console.log(fn10('返回值')); //返回值
+
+
+		function fn11() {
+			console.log(11); //11
+		}
+		console.log(fn11()); //undefined
+
+
+		function fn12() {
+			console.log(12); //12 
+			return;
+			console.log(13); //因为return的原因，代码执行到return就停了，这里没有被执行
+		}
+
+		console.log(fn12()); //undefined
+
 	</script>
 </body>
 </html>
