@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#btn {
+			float: left;
+			font-size: 10px;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" id="btn" value="按钮">
+	<!-- 
+		getPropertyValue 
+			直接获取对象身上css样式的值，直接用属性名获取,不支持驼峰写法
+
+		语法：
+			window.getComputedStyle('element').getPropertyValue('css属性名')
+
+		兼容：基本高版本浏览器都兼容
+	-->
+	<script type="text/javascript">
+		var btn = document.getElementById('btn');
+		var width =  window.getComputedStyle(btn).width;
+		console.log(width); //42.2869px
+		var float = window.getComputedStyle(btn).float;
+		var float2 = window.getComputedStyle(btn).getPropertyValue('float');
+		console.log(float); //left
+		console.log(float2); //left
+		var fontSize = window.getComputedStyle(btn).fontSize;
+		console.log(fontSize); //10.9091px
+		var fontSize2 = window.getComputedStyle(btn).getPropertyValue('font-size');
+		console.log(fontSize2); //10.9091px
+	</script>
+
+	<!-- 
+		而在低版本的IE浏览器上就要用getAttribute，用法跟getPropertyValue一样，只是属性名要用驼峰写法
+	-->
+</body>
+</html>

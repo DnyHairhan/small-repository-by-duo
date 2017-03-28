@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<input type="button" id="btn" value="按钮">
+	<!-- 
+		getComputedStyle()
+		是获取元素身上的最终css属性对象的一个window上面的属性
+
+		语法：
+			window.getComputedStyle('元素', '伪类');
+		
+		注意：
+			它只能读，不能写
+
+		参数：
+			1.要获取css样式的元素
+			2.第二个参数“伪类”是必需的（如果不是伪类，设置为null），不过现在嘛，不是必需参数了。
+
+		兼容性：
+			对于pc端：Chrome，Firefox，IE9，Opera，Safari
+
+	-->
+	<script type="text/javascript">
+		var btn = document.getElementById('btn');
+		var style = window.getComputedStyle(btn);
+
+		if(typeof style === 'object') {
+			for(var attr in style) {
+				// console.log(attr +':'+ style[attr]);
+			}
+		}
+	</script>
+
+	<!-- 
+	currentStyle
+		写法上是跟style是一样的都是element.currentStyle,作用跟getComputedStyle基本一样，返回的值是元素当前应用的最终css属性值,它算是IE自家的，所以可以说成是跟getComputedStyle互补
+
+		语法：
+			element.currentStyle
+
+		注意：测试currentStyle要用IE	
+	-->
+	<script type="text/javascript">
+		// console.log(1)
+		var currentStyle = btn.currentStyle;
+		// console.log(currentStyle); 
+
+
+		if(btn.currentStyle) {
+			console.log('没有getComputedStyle');
+			console.log('有currentStyle');
+		} else {
+			console.log('没有currentStyle');
+			console.log('有getComputedStyle');
+		}
+	</script>
+</body>
+</html>
