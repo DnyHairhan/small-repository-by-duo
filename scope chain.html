@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<!-- 
+		作用域链
+			变量和函数的查找规则
+			从里到外的规则，先从本身作用域里找，找不到就从外层作用域里找，如果找到最外层没有找到这个变量或者函数的话，结果是is not defined
+	-->
+	<script type="text/javascript">
+		var a = 1;
+		function fn() {
+			var b = 2;
+		}
+
+		function find() {
+			function fn1() {
+				function fn2() {
+					// console.log(b);  //b is not defined
+					console.log(a); //1
+				}
+				fn2();
+			}
+			fn1();
+		}
+		find();
+
+		
+	</script>
+</body>
+</html>
