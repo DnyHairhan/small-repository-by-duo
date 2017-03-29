@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<!-- 
+		作用域
+		是变量与函数可以访问的一个范围，以函数来区分，一个函数就是一个作用域
+		1.全局作用域
+			只要在函数外声明的变量或者函数都有全局作用，在整个文档里都能访问到
+		声明全局变量方法：
+			1.在函数外用var声明
+			2.在任何区域不用var声明变量，直接给变量名赋值
+		注意：
+			全局变量是window的属性，所以不用var声明的话就会被认为是window.变量名，尽量避免全局变量，所以要用var先声明
+	-->
+	<script type="text/javascript">
+		b = 2;
+		function fn() {
+			a = 1;
+			var c= 3;
+			console.log(a);
+			console.log(b);
+			console.log(c);
+		}
+		fn();
+		
+		console.log(b);
+		console.log(a);
+		console.log(c);
+	</script>
+	<!-- 
+		局部作用域
+			局部作用域就是指的函数内，变量或者函数在函数的内部声明，就只能在函数内使用，这就是局部作用域
+		声明局部变量：
+			var 变量名
+	-->
+	<script type="text/javascript">
+		function fn1() {
+			var name = 'Lily';
+			function say() {
+				console.log('ok');
+			}
+			console.log(name);
+			say();
+		}
+		console.log(name);
+		say(); //say is not defined
+		fn1();
+	</script>
+	<!-- 
+		es6里有另一个规定，作用域以块分，叫块级作用域{}，只要有{}就叫一个作用域
+
+		注意：
+			块级作用域{}对var声明的变量不起作用，比如说在if或者for循环里用var声明的变量再if或者for外面都能访问得到，所以在es6里出现了一个let来代替var，let可以解决这个坑
+	-->
+
+	<script type="text/javascript">
+		for(var i=0; i<5; i++) {
+			console.log(i); //01234
+		}
+		console.log(i); //5
+
+		for(let j=0; j<5; j++) {
+			console.log(j); //01234
+		}
+		console.log(j); //j is not defined
+	</script>
+</body>
+</html>
