@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title></title>
 	<!-- <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" /> -->
-	<!-- <meta content="initial-scale=1.5, maximum-scale=1.5, user-scalable=0" name="viewport" /> -->
+	<!-- <meta content="initial-scale=1.5, maximum-scale=1.5, user-scalable=no" name="viewport" /> -->
 	<style type="text/css">
 		body {
 			margin: 0;
@@ -34,7 +34,7 @@
 		console.log(scale); //每一个设备的宽度/320 得出的比例都不同
 		var meta = document.createElement('meta');
 		meta.name = 'viewport';
-		meta.content = 'initial-scale='+scale+', maximum-scale='+scale+', minimum-scale='+scale+',user-scalable=0';
+		meta.content = 'initial-scale='+scale+', maximum-scale='+scale+', minimum-scale='+scale+',user-scalable=no';
 		document.head.appendChild(meta);
 
 		// 设备的宽度比上当前要设置的320，得出来的比例要用到页面大小上，而实际页面html的大小是跟设备的宽度是一样的，用设备的宽度在除以这个比例的话就能灵活的设置设备宽度，也就能控制html，用这个方法的原因是不能直接修改device-width设备宽度，所以就用设备缩放比例来计算，这个方法的好处在于，只要算好比例，无论换什么设备html都不会被影响，而里面的内容就按缩放后的尺寸设置就可以
