@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		html {
+			font-size: 62.5%;
+		}
+		div {
+			font-size: 62.5%;
+		}
+		#span1 {
+			font-size: 1.2em;
+		}
+		#span2 {
+			font-size: 1.2rem;
+		}
+	</style>
+</head>
+<body>
+	<!-- 
+		rem em px 都是字体高度单位
+		px 是计算机绝对单位，通常字体默认是16px
+		rem 和 em 都是相对单位，由浏览器转换为px值,rem是相对于html根元素，em相对于父级元素
+
+		通常在css样式中会写到
+			body {
+				font-size:62.5%;
+			}
+			这个是为了让1em=16px的换算更方便一些，改变font-size的百分比的结果是1em = 16px * 62.5% = 10px;
+			这样的话计算起来比较方便12px = 1.2em;
+		注意：em会有一个弊端，当同名标签嵌套多层可能会有字体大小逐层复合的连锁反应，而下面的rem不会
+		
+		如果要用到rem的时候，就要跟html对比了。1rem  = 16px;
+			html {
+				font-size:62.5%;
+			}
+			会让1rem = 10px;
+
+			em和rem会让页面有整体感，只用改变父级元素或者根元素就可以了，如果用了px会很麻烦，rem和em的值不是固定的，随着父级及html的改变也会改变
+	-->
+	<div>
+		<p>
+			<span id="span1">你好</span>
+		</p>
+		<span id="span2">你好</span>
+	</div>
+	<script type="text/javascript">
+		var span1 = document.getElementById('span1');
+		var span2 = document.getElementById('span2');
+		// span1在没有改变body的font-size的百分比之前19.2px,改变百分比之后是12px,在改变html的百分比之后12px
+		console.log(getComputedStyle(span1).fontSize); 
+		// span2在没有改变body的font-size的百分比之前19.2px,改变百分比之后是19.2px,在改变html的百分比之后12px
+		console.log(getComputedStyle(span2).fontSize); 
+	</script>
+</body>
+</html>
