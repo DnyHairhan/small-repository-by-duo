@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		.box1 {
+			width:200px;
+			height:200px;
+			/*background: rgb(0,255,0);*/
+			background: rgba(0,255,0,.5);
+			/*opacity: .2;*/
+		}
+		.box2 {
+			width:100px;
+			height:100px;
+			background: red;
+		}
+		.text {
+			color: #000;
+		}
+	</style>
+</head>
+<body>
+	<!--  
+		rgba opacity 都是控制透明度的
+		区别：
+			rgba只能控制元素自己的透明度，不回影响到元素内的子元素以及内容
+			opacity会把元素以及元素内的内容和子元素的透明度都进行改变
+
+	-->
+	<div class="box1">abc
+		<div class="box2">
+			<span class="text">透明度</span>
+		</div>
+	</div>
+</body>
+</html>
