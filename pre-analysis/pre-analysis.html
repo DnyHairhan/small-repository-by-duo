@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<!-- 
+	预解析：
+		是函数和变量提前解析的过程，js会把函数和变量解析到对应作用域最开始的位置
+	步骤：
+		1.先找到var，function关键词以及参数
+		2.找到var声明的变量或者参数会先给它赋一个值undefined，如果找到的是function，那他会把整个代表块拿到
+		3.把找到的东西放到对应作用域的最开始的位置
+		4.最后逐行解读代码
+
+		注意：
+			上面的步骤只局限于同一个作用域
+-->
+	<script type="text/javascript">
+		console.log(a); //undefined
+		console.log(fn); //function fn(b) {
+							// 	console.log(c);
+							// 	var c = 'c';
+							// 	console.log(b);
+						// }
+		var a = 'a';
+
+		function fn(b) {
+			console.log(c); //undefined
+			var c = 'c';
+			console.log(b); //b
+		}
+
+		fn('b');
+		console.log(a); //a
+		console.log(b); //b is not defined
+		console.log(c); //c is not defined
+	</script>
+</body>
+</html>

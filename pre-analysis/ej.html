@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	var b=10;
+	function fn(){
+		console.log('函数内b',b);		//函数内b undefined   
+		var b=20;
+	}
+	fn();
+	console.log('函数外b',b);		//函数外b 10	
+	
+	
+	
+	
+	
+	var c=10;
+	function fn1(){
+
+		
+		console.log('函数内c',c);		//函数内c 10   注意：函数内并没有用var声明c变量所以没有预解析，在函数内找不到c就用作用域链寻找函数外的c
+		c=20;
+	}
+	fn1();
+	console.log('函数外c',c);			//函数外c 20  注意：函数内c=20是改变了全局的c的值，所以函数外的c就是20
+	
+	
+	
+	 // var d= undefined;
+	 //  function fn2(d){
+		// 	console.log('函数内d',d);		
+		// 	d=24;
+		// }这一部分代码不会有任何效果，函数和变量的重复声明，后面声明的会把前面的覆盖掉
+	 
+	
+	var d=12;
+	function fn2(d){
+		console.log('函数内d',d);		//函数内d undefined
+		d=24;
+	}
+	fn2();
+	console.log('函数外d',d);			//函数外d 12
+	
+	
+	
+	// var e=undefined;
+	//   function fn3(e){
+	// 		console.log('函数内e',e);	
+	// 		e=54;
+	// 	}  这一部分代码不会有任何效果，函数和变量的重复声明，后面声明的会把前面的覆盖掉
+	 
+	
+	
+	var e=13;
+	function fn3(e){
+		//var e=undefined;
+		console.log('函数内e',e);		//函数内e 13
+		e=54;
+	}
+	
+	fn3(e);
+	console.log('函数外e',e);		//函数外e 13	
+</script>
+</body>
+</html>
