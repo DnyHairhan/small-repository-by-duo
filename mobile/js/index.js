@@ -1,5 +1,6 @@
-(function(){
-    
+(function(){  
+
+  // 这个只是用来实验用rem是否需要设置缩放比例，目前我能力有限，
     var deviceWidth = window.screen.width;
     // console.log(deviceWidth);
     var htmlWidth = 320;
