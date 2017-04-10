@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body,div,dl,dt,dd,span,input {
+			margin:0;
+			padding: 0;
+		}
+		.wrap {
+			width:500px;
+			margin:0 auto;
+		}
+		.listClass {
+			border: 1px solid #ccc;
+		}
+		dt {
+			height:50px;
+			background:#55dd8a;
+			line-height: 50px;
+			padding-left: 20px;
+			color:#FFf;
+		}
+		.sort {
+			padding: 5px 20px;
+			border-top: 1px solid #ccc; 
+		}
+		.status {
+			height:20px;
+			line-height: 20px;
+		}
+		.btn {
+			width:50px;
+			height:20px;
+			background: #ffc107;
+			border-style: none;
+			color:#FFf;
+		}
+		.status1 {
+			display: none;
+		}
+		.status2 {
+			display: block;
+		}
+		.text {
+			height:20px;
+			color: #ccc;
+		}
+		.textColor {
+			color:#000;
+		}
+	</style>
+</head>
+<body>
+	<!--  
+		需求：
+			a状态：只显示文字列表，修改按钮
+			b状态：只显示输入框，输入框里的内容，保存按钮，取消按钮
+			1.点击修按钮时为b状态
+			2.点击保存按钮时，a状态，把输入框内输入的内容显示在列表里
+			3.点击取消按钮时，a状态，列表内容显示为上次保存时的内容
+			4.点击修改按钮时除了被点击的列表为b状态，其他的列表都为a状态
+	-->
+	<div class="wrap">
+		<dl class="listClass">
+			<dt>
+				<span>分类名称</span>
+			</dt>
+			<dd class="sort">
+				<div class="status status1">
+					<input type="text" class="text" value="">
+					<input type="button" class="btn btnSave" value="保存">
+					<input type="button" class="btn btnCancel" value="取消">
+				</div>
+				<div class="status status2">
+					<span class="name">请输入名称</span>
+					<input type="button" class="btn btnModify" value="修改">
+				</div>
+			</dd>
+			<dd class="sort">
+				<div class="status status1">
+					<input type="text" class="text" value="">
+					<input type="button" class="btn btnSave" value="保存">
+					<input type="button" class="btn btnCancel" value="取消">
+				</div>
+				<div class="status status2">
+					<span class="name">请输入名称</span>
+					<input type="button" class="btn btnModify" value="修改">
+				</div>
+			</dd>
+			<dd class="sort">
+				<div class="status status1">
+					<input type="text" class="text" value="">
+					<input type="button" class="btn btnSave" value="保存">
+					<input type="button" class="btn btnCancel" value="取消">
+				</div>
+				<div class="status status2">
+					<span class="name">请输入名称</span>
+					<input type="button" class="btn btnModify" value="修改">
+				</div>
+			</dd>
+			<dd class="sort">
+				<div class="status status1">
+					<input type="text" class="text" value="">
+					<input type="button" class="btn btnSave" value="保存">
+					<input type="button" class="btn btnCancel" value="取消">
+				</div>
+				<div class="status status2">
+					<span class="name">请输入名称</span>
+					<input type="button" class="btn btnModify" value="修改">
+				</div>
+			</dd>
+		</dl>
+	</div>
+	<script type="text/javascript">
+		// 获取要用到的元素
+		var sorts = document.getElementsByClassName('sort');
+		var status1 = document.getElementsByClassName('status1');
+		var status2 = document.getElementsByClassName('status2');
+		var texts = document.getElementsByClassName('text');
+		var btnSaves = document.getElementsByClassName('btnSave');
+		var btnModifys = document.getElementsByClassName('btnModify');
+		var btnCancels = document.getElementsByClassName('btnCancel');
+		var names = document.getElementsByClassName('name'); 
+		// 循环所有的列表
+		for(var i=0; i<sorts.length; i++) {
+			// 点击修改按钮		
+			btnModifys[i].index = i;
+			btnModifys[i].onclick = function() {
+				for(var i=0; i<sorts.length; i++) {
+					plan1(i);
+				}
+				plan2(this.index);
+				texts[this.index].value = names[this.index].innerHTML;
+			}
+
+			// 点击保存按钮
+			btnSaves[i].index = i;
+			btnSaves[i].onclick = function() {
+				var value = texts[this.index].value;
+				plan1(this.index);
+				names[this.index].innerHTML = value;
+			}
+
+			//点击取消按钮
+			btnCancels[i].index = i;
+			btnCancels[i].onclick = function() {
+				plan1(this.index);
+			} 
+		}
+
+		function plan1(i) {
+			status1[i].style.display = 'none';
+			status2[i].style.display = 'block';
+		}
+		function plan2(i) {
+			status1[i].style.display = 'block';
+			status2[i].style.display = 'none';
+		}
+	</script>
+</body>
+</html>
