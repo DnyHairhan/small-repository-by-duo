@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		.box {
+			background: #ccc;	
+		}
+		.box p {
+			height:50px;
+			border: 1px solid #000;
+			line-height: 50px;
+			letter-spacing: .5rem;
+		}
+		.box1 {
+			line-height: 100px;
+			height:100px;
+			background: #ccc;
+			font-size: 0;
+		}
+		.box1 span {
+			font-size: 16px;
+			background: red;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.box1 img{
+			vertical-align: middle;
+			width:80px;
+			height:90px;
+		}
+	</style>
+</head>
+<body>
+	<!--
+		line-height:是文字行间距，次属性不能有负值，只对文字起作用
+
+		letter-spacing:是文字间左右间距
+
+		vertical-align:行内元素的基线相对于本身所在行的基线的垂直对齐,默认放再父元素的基线上
+
+		注意：
+			如果要让图片居中就给图片的父级加上font-size:0;然后给图片加上vertical-align:middle;这时如果父级里面有文字的话要另设置font-size然后加上vertical-align:middle;这样就保证文字图片都居中
+	-->
+	<div class="box">
+		测试行距和文字间距
+		<p>测试行距和文字间距</p>
+		<p>测试行距和文字间距</p>
+	</div>
+	<div class="box1">
+		<span>xxxxxxxxxxx</span>
+		<img src="img.jpeg">
+	</div>
+</body>
+</html>
